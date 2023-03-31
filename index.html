@@ -1,1 +1,294 @@
-trace-pace
+<!Doctype html>
+<html lang="en">
+    <head>
+        <title>Trace & Pace</title>
+
+        <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+        <meta name="author" content="Davis Rempe">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+
+        <link rel="stylesheet" type="text/css" href="style_project_page.css?cache=7733391418498779679">
+        <link href="https://fonts.googleapis.com/css?family=Arvo|Roboto&display=swap" rel="stylesheet">
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+        <link rel="stylesheet" href="https://cdn.rawgit.com/jpswalsh/academicons/master/css/academicons.min.css">
+        <link rel="stylesheet" href="https://unpkg.com/@glidejs/glide/dist/css/glide.core.min.css">
+        <script src="https://polyfill.io/v3/polyfill.min.js?features=es6"></script>
+        <script id="MathJax-script" async src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+        <script src="https://unpkg.com/@glidejs/glide"></script>
+        <style type="text/css">
+            .side-text {
+                width:60%;
+                display:inline-block;
+                vertical-align:top;
+            }
+            .side-image {
+                width: 38%;
+                display: inline-block;
+                vertical-align: top;
+            }
+            .controls {
+                margin-bottom: 10px;
+            }
+            .left-controls {
+                display: inline-block;
+                vertical-align: top;
+                width: 80%;
+            }
+            .right-controls {
+                display: inline-block;
+                vertical-align: top;
+                width: 19%;
+                text-align: right;
+            }
+            .render_window {
+                display: inline-block;
+                vertical-align: middle;
+                box-shadow: 1px 0px 5px black;
+                margin-right: 10px;
+                margin-bottom: 10px;
+                width: calc(33% - 10px);
+            }
+            .progress {
+                background: #666;
+                position: relative;
+                height: 5px;
+                margin-bottom: -5px;
+                display: none;
+            }
+            .glide__slide:hover {cursor: grab;}
+            .glide__slide:active {cursor: grabbing;}
+            .glide__slide img {width: 90%;}
+            .glide__bullets {
+                text-align: center;
+            }
+            .glide__bullet--active {
+                color: #aaa; 
+            }
+
+            @media (max-width: 400px) {
+                .render_window {
+                    display: block;
+                    width: 90%;
+                    margin: 10px auto;
+                }
+            }
+            @media (max-width: 700px) {
+                .side-image {
+                    display: block;
+                    width: 80%;
+                    margin: 10px auto;
+                }
+                .side-text {
+                    display: block;
+                    width: 100%;
+                }
+            }
+        </style>
+    </head>
+    <body>
+        <div class="section">
+            <h1 class="project-title">
+                Trace and Pace: Controllable Pedestrian Animation <br> via Guided Trajectory Diffusion
+            </h1>
+            <div class="authors">
+                <a href=https://davrempe.github.io>
+                    Davis Rempe<sup>*,1,2</sup>
+                </a>
+                <a href=https://zhengyiluo.github.io>
+                    Zhengyi Luo<sup>*,1,3</sup>
+                </a>
+                <a href=https://xbpeng.github.io>
+                    Xue Bin Peng<sup>1,4</sup>
+                </a>
+                <a href=https://ye-yuan.com>
+                    Ye Yuan<sup>1</sup>
+                </a>
+                <br>
+                <a href=https://kriskitani.github.io>
+                    Kris Kitani<sup>3</sup>
+                </a>
+                <a href=https://karstenkreis.github.io>
+                    Karsten Kreis<sup>1</sup>
+                </a>
+                <a href=https://www.cs.utoronto.ca/~fidler>
+                    Sanja Fidler<sup>1,5,6</sup>
+                </a>
+                <a href=https://orlitany.github.io>
+                    Or Litany<sup>1</sup>
+                </a>
+            </div>
+
+            <div class="affiliations">
+                <span><sup>1</sup> NVIDIA </span>&emsp;
+                <span><sup>2</sup> Stanford University</span>&emsp;
+                <span><sup>3</sup> Carnegie Mellon University</span>&emsp;
+                <span><sup>4</sup> Simon Fraser University</span>&emsp;
+                <br>
+                <span><sup>5</sup> University of Toronto</span>&emsp;
+                <span><sup>6</sup> Vector Institute</span>&emsp;
+                <span><sup>*</sup> Equal contribution</span>&emsp;
+            </div>
+
+            <div class="project-conference">
+                Conference on Computer Vision and Pattern Recognition (<b>CVPR</b>) 2023
+            </div>
+
+            <div class="project-icons">
+                <a href="docs/trace_and_pace.pdf">
+                    <i class="fa fa-file"></i> <br/>
+                    Paper
+                </a>
+                <a href="supp.html">
+                    <i class="fa fa-youtube-play"></i> <br/>
+                    Supplementary
+                </a>
+                <!-- <a href="https://github.com/davrempe/humor">
+                    <i class="fa fa-github"></i> <br/>
+                    Code
+                </a> -->
+            </div>
+
+            <div class="section-title"></div>
+            <!-- <div class="teaser-image">
+                <center>
+                <iframe width="850" height="478" src="https://www.youtube.com/embed/oQt6xSNxm0A" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+                </center>
+            </div> -->
+            <div class="teaser-image">
+                <center>
+                <img src="img/teaser.png" style="width:100%;">
+                </center>
+            </div>
+            <div class="section-title"></div>
+            <div class="content">
+                <p>
+                    We introduce a method for generating <b>realistic pedestrian trajectories and full-body animations</b> that can be 
+                    controlled to <b>meet user-defined goals</b>. We draw on recent advances in guided diffusion modeling to achieve 
+                    test-time controllability of trajectories normally only associated with rule-based systems. Our <b>guided 
+                    diffusion model</b> allows users to constrain trajectories through target waypoints, speed, and specified social 
+                    groups while accounting for the surrounding environment context. This trajectory diffusion model is integrated
+                     with a novel <b>physics-based humanoid controller</b> to form a closed-loop, full-body pedestrian animation system 
+                     capable of placing large crowds in a simulated environment with varying terrains. We further propose utilizing 
+                     the value function learned during RL training of the animation controller to guide diffusion to produce 
+                     trajectories better suited for particular scenarios such as collision avoidance and traversing uneven terrain.
+                </p>
+            </div>
+
+            <div class="section-title">TRACE: Controllable Trajectory Diffusion</div>
+            <div class="content">
+                <p>
+                    <img src="img/trace_arch.png" style="width:100%;">
+                    <!-- <center><p class="caption">HuMoR conditional variational autoencoder architecture.</p></center> -->
+                    For trajectory generation, we introduce a <b>TRA</b>jectory Diffusion Model for <b>C</b>ontrollable 
+                    P<b>E</b>destrians (TRACE). Inspired by recent successes in trajectory generation through denoising, 
+                    TRACE generates the future trajectory for each pedestrian in a scene and accounts for the surrounding context 
+                    through a spatial grid of learned map features that is queried locally during denoising.
+                    User-controlled sampling is achieved through test-time guidance, which perturbs the output at each 
+                    step of denoising toward the desired objective. We introduce several analytical loss 
+                    functions for pedestrians and re-formulate trajectory guidance to operate on clean trajectory outputs from 
+                    the model, improving sample quality and adherence to user objectives.
+                </p>
+            </div>
+
+            <div class="section-title">PACER: Physics-based Humanoid Controller</div>
+            <div class="content">
+                <p>
+                    <img src="img/pacer_arch.png" style="width:75%;">
+                    <!-- <center><p class="caption">HuMoR conditional variational autoencoder architecture.</p></center> -->
+                    For character animation, we develop a general-purpose <b>P</b>edestrian <b>A</b>nimation 
+                    <b>C</b>ontroll<b>ER</b> (PACER) capable of driving physics-simulated humanoids with diverse body types 
+                    to follow trajectories from a high-level planner. We focus on (1) motion quality: PACER learns from 
+                    a small motion database to create natural and realistic locomotion through adversarial motion learning; 
+                    (2) terrain and social awareness: by learning in diverse terrains with other humanoids, PACER learns to 
+                    move through stairs, slopes, uneven surfaces, and to avoid obstacles and other pedestrians; (3) diverse 
+                    body shapes: by training on different body types, PACER draws on years of simulation experience to control 
+                    a wide range of characters; (4) compatibility with high-level planners: PACER accepts 2D waypoints and can 
+                    be a plug-in model for any 2D trajectory planner. 
+                </p>
+            </div>
+
+            <div class="section-title">End-to-end Pedestrian Animation System</div>
+            <div class="content">
+                We demonstrate a controllable pedestrian animation system using TRACE as a high-level planner for PACER, the 
+                low-level animator. The planner and controller operate in a closed loop through frequent re-planning according 
+                to simulation results. For more extensive video results see the <a href="supp.html">supplementary webpage</a>.
+                <br><br>
+                Our system enables simulating large crowds of pedestrians. Guiding trajectory diffusion helps to 
+                avoid collisions (left) and form social groups specified by a user (right).
+                <br><br>
+                <figure style="width: 49.5%;">
+                    <video class="centered" width="100%" controls muted loop autoplay>
+                        <source src="videos/full_system/crowd_top.mp4" type="video/mp4"/>
+                    </video>
+                    <center><p class="caption">Pedestrians naturally avoid a majority of collisions in crowds.</p></center>
+                </figure>
+                <figure style="width: 49.5%;">
+                    <video class="centered" width="100%" controls muted loop autoplay>
+                        <source src="videos/full_system/social_groups.mp4" type="video/mp4"/>
+                    </video>
+                    <center><p class="caption">Guidance enables user-defined social groups.</p></center>
+                </figure>
+                <br><br>
+                Our character controller is robust to a variety of terrains (left), and diffusion guidance enables 
+                avoiding obstacle collisions while traveling to a goal location (right).
+                <br><br>
+                <figure style="width: 49.5%;">
+                    <video class="centered" width="100%" controls muted loop autoplay>
+                        <source src="videos/full_system/terrain.mp4" type="video/mp4"/>
+                    </video>
+                    <center><p class="caption">PACER is robust to a variety of terrains within physical simulation.</p></center>
+                </figure>
+                <figure style="width: 49.5%;">
+                    <video class="centered" width="100%" controls muted loop autoplay>
+                        <source src="videos/full_system/obstacles.mp4" type="video/mp4"/>
+                    </video>
+                    <center><p class="caption">Guidance enables obstacle avoidance while going to waypoints.</p></center>
+                </figure>
+                <br><br>
+                A promising applications of our system is the ability to generate synthetic data in urban scenes with realistic 
+                dynamic agents. This is useful, for example, for developing and testing autonomous vehicles.
+                <br><br>
+                <figure style="width: 48.0%;">
+                    <video class="centered" width="100%" controls muted loop autoplay>
+                        <source src="videos/full_system/street_scene_full_map.mp4" type="video/mp4"/>
+                    </video>
+                    <center><p class="caption">Simulated crowds in streets handle curbs and steep slopes.</p></center>
+                </figure>
+                <figure style="width: 49.5%;">
+                    <video class="centered" width="100%" controls muted loop autoplay>
+                        <source src="videos/full_system/street_scene_textured.mp4" type="video/mp4"/>
+                    </video>
+                    <center><p class="caption">Targeting animations to textured characters for synthetic data.</p></center>
+                </figure>
+            </div>
+
+            <div class="section-title">Additional Results</div>
+            <div class="content">
+                A more detailed explanation of the above results and more videos are available on
+                the <a href="supp.html">full supplementary material webpage</a>.
+            </div>
+
+            <div class="section-title">Citation</div>
+            <div class="section bibtex">
+            <pre>
+@inproceedings{rempeluo2023tracepace,
+    author={Rempe, Davis and Luo, Zhengyi and Peng, Xue Bin and Yuan, Ye and Kitani, Kris and Kreis, Karsten and Fidler, Sanja and Litany, Or},
+    title={Trace and Pace: Controllable Pedestrian Animation via Guided Trajectory Diffusion},
+    booktitle={Conference on Computer Vision and Pattern Recognition (CVPR)},
+    year={2023}
+}            </pre>
+            </div>
+            <br>
+            <div class="section-title">Acknowledgments</div>
+            <div class="content">
+                This project page template is based on <a href="https://github.com/paschalidoud/paschalidoud.github.io/blob/master/neural_parts.html">this page</a>.
+            </div>
+            <br>
+            <div class="section-title">Contact</div>
+            <div class="content">
+                For any questions, please contact <a href="mailto:drempe@stanford.edu">Davis Rempe</a> or <a href="mailto:zluo2@cs.cmu.edu">Zhengyi Luo</a>.
+            </div>
+        </div>        
+    
+    </body>
+</html>

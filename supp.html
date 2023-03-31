@@ -1,0 +1,906 @@
+<head>
+    <script src="http://www.google.com/jsapi" type="text/javascript"></script>
+    <script type="text/javascript">
+    google.load("jquery", "1.3.2");
+    </script>    
+</head>
+
+<style type="text/css">
+body {
+    font-family: "HelveticaNeue-Light", "Helvetica Neue Light", "Helvetica Neue", Helvetica, Arial, "Lucida Grande", sans-serif;
+    font-weight: 300;
+    font-size: 18px;
+    margin-left: auto;
+    margin-right: auto;
+    width: 1100px;
+}
+
+h1 {
+    font-weight: 300;
+    margin: 0.4em;
+}
+
+p {
+    margin: 0.2em;
+}
+
+.disclaimerbox {
+    background-color: #eee;
+    border: 1px solid #eeeeee;
+    border-radius: 10px;
+    -moz-border-radius: 10px;
+    -webkit-border-radius: 10px;
+    padding: 20px;
+}
+
+video.header-vid {
+    height: 140px;
+    border: 1px solid black;
+    border-radius: 10px;
+    -moz-border-radius: 10px;
+    -webkit-border-radius: 10px;
+}
+
+img.header-img {
+    height: 140px;
+    border: 1px solid black;
+    border-radius: 10px;
+    -moz-border-radius: 10px;
+    -webkit-border-radius: 10px;
+}
+
+img.rounded {
+    border: 1px solid #eeeeee;
+    border-radius: 10px;
+    -moz-border-radius: 10px;
+    -webkit-border-radius: 10px;
+}
+
+a:link,
+a:visited {
+    color: #1367a7;
+    text-decoration: none;
+}
+
+a:hover {
+    color: #208799;
+}
+
+td.dl-link {
+    height: 160px;
+    text-align: center;
+    font-size: 22px;
+}
+
+.layered-paper-big {
+    /* modified from: http://css-tricks.com/snippets/css/layered-paper/ */
+    box-shadow:
+        0px 0px 1px 1px rgba(0, 0, 0, 0.35),
+        /* The top layer shadow */
+        5px 5px 0 0px #fff,
+        /* The second layer */
+        5px 5px 1px 1px rgba(0, 0, 0, 0.35),
+        /* The second layer shadow */
+        10px 10px 0 0px #fff,
+        /* The third layer */
+        10px 10px 1px 1px rgba(0, 0, 0, 0.35),
+        /* The third layer shadow */
+        15px 15px 0 0px #fff,
+        /* The fourth layer */
+        15px 15px 1px 1px rgba(0, 0, 0, 0.35),
+        /* The fourth layer shadow */
+        20px 20px 0 0px #fff,
+        /* The fifth layer */
+        20px 20px 1px 1px rgba(0, 0, 0, 0.35),
+        /* The fifth layer shadow */
+        25px 25px 0 0px #fff,
+        /* The fifth layer */
+        25px 25px 1px 1px rgba(0, 0, 0, 0.35);
+    /* The fifth layer shadow */
+    margin-left: 10px;
+    margin-right: 45px;
+}
+
+
+.layered-paper {
+    /* modified from: http://css-tricks.com/snippets/css/layered-paper/ */
+    box-shadow:
+        0px 0px 1px 1px rgba(0, 0, 0, 0.35),
+        /* The top layer shadow */
+        5px 5px 0 0px #fff,
+        /* The second layer */
+        5px 5px 1px 1px rgba(0, 0, 0, 0.35),
+        /* The second layer shadow */
+        10px 10px 0 0px #fff,
+        /* The third layer */
+        10px 10px 1px 1px rgba(0, 0, 0, 0.35);
+    /* The third layer shadow */
+    margin-top: 5px;
+    margin-left: 10px;
+    margin-right: 30px;
+    margin-bottom: 5px;
+}
+
+.vert-cent {
+    position: relative;
+    top: 50%;
+    transform: translateY(-50%);
+}
+
+hr {
+    margin: 0;
+    border: 0;
+    height: 1.5px;
+    background-image: linear-gradient(to right, rgba(0, 0, 0, 0), rgba(0, 0, 0, 0.75), rgba(0, 0, 0, 0));
+}
+
+.rotate {
+    /* FF3.5+ */
+    -moz-transform: rotate(-90.0deg);
+    /* Opera 10.5 */
+    -o-transform: rotate(-90.0deg);
+    /* Saf3.1+, Chrome */
+    -webkit-transform: rotate(-90.0deg);
+    /* IE6,IE7 */
+    filter: progid: DXImageTransform.Microsoft.BasicImage(rotation=0.083);
+    /* IE8 */
+    -ms-filter: "progid:DXImageTransform.Microsoft.BasicImage(rotation=0.083)";
+    /* Standard */
+    transform: rotate(-90.0deg);
+}
+
+c {
+    white-space: nowrap;
+    writing-mode: tb-rl;
+    transform: rotate(-180.0deg);
+}
+
+    .topnav {
+      background-color: #eeeeee;
+      overflow: hidden;
+    }
+
+    .topnav div {
+      max-width: 1070px;
+      margin: 0 auto;
+    }
+
+    .topnav a {
+      display: inline-block;
+      color: black;
+      text-align: center;
+      vertical-align: middle;
+      padding: 16px 16px;
+      text-decoration: none;
+      font-size: 16px;
+    }
+
+    .topnav img {
+      width: 100%;
+      margin: 0.2em 0px 0.3em 0px;
+    }
+
+
+</style>
+<html>
+
+<head>
+    <title>Trace & Pace</title>
+    <meta property="og:title" content="nlos" />
+</head>
+
+<body>	
+
+    <br>
+    <center>
+    <p>
+        <span style="font-size:42px">Trace and Pace: Controllable Pedestrian Animation <br> via Guided Trajectory Diffusion</span>
+    </p>
+    </center>
+    <br>
+    
+    <br>
+    <table align=center width=700px>
+        <tr>
+            <td align=center width=100px>
+                <center>
+                    <span style="font-size:25px"> Supplementary Material </span> 
+                </center>
+            </td>
+        </tr>
+    </table>
+    <br>
+    <br>
+        
+    <hr>
+    <center>
+        <h1>Video Results</h1>
+    </center>    
+    <p>
+        <ol>
+            <li><a href="#full_system_results">Trace and Pace: Full Animation System Results</a></li>
+                <ul>
+                    <li><a href="#full_sys_crowds">Agent Avoidance in Crowds</a></li>
+                    <li><a href="#full_sys_social_groups">Social Groups</a></li>
+                    <li><a href="#full_sys_variable_terrain">Variable Terrains</a></li>
+                    <li><a href="#full_sys_obstacles">Obstacles and Waypoints</a></li>
+                    <li><a href="#full_sys_sdg">Synthetic Data Generation in Street Scenes</a></li>
+                </ul>
+            <li><a href="#pacer_results">PACER: Analysis and Ablations</a></li>
+                <ul>
+                    <li><a href="#pacer_capabilities">Demo of Features</a></li>
+                    <li><a href="#pacer_body_shape">Body Shape Awareness Ablation</a></li>
+                    <li><a href="#pacer_sym_loss">Motion Symmetry Loss Ablation</a></li>
+                    <li><a href="#pacer_failures">Failure Cases</a></li>
+                </ul>
+                <li><a href="#trace_results">TRACE: Qualitative Results</a></li>
+                <ul>
+                    <li><a href="#trace_orca">ORCA Data</a></li>
+                    <li><a href="#trace_nusc">nuScenes Data</a></li>
+                </ul>
+        </ol>
+
+    </p>
+    <hr>
+    <br>
+    <br>
+
+</table>
+<br>
+
+<table align=center width=1000px>
+    <tr>
+        <td>
+            <a id="full_system_results"></a>
+            <p align="justify">
+                <span style="font-size:35px">
+                    <b>Trace and Pace: Controllable Pedestrian Animation System</b>
+                </span>                                     
+                <br>
+                Here we show qualitative results of the full system corresponding to Sec 4.3 of the main paper. 
+                TRACE is used as the trajectory planner and PACER controls the animations.
+                In each example, the 3D visualized trajectories are the 5 sec future plans from TRACE, which are updated every 2 sec.
+                The inset top-down visualization shows the inputs and outputs of TRACE: the inputs are the past 3 sec history (solid line) of the ego and neighbors and the map of obtacles, and 
+                the output is the future trajectory (dashed lines).
+                <br><br>
+                <a id="full_sys_crowds"></a>
+                <span style="font-size:25px">
+                    Agent Avoidance in Crowds
+                </span>    
+                <br>
+                Several examples of large scale (100 pedestrians) crowd simulations. In this case, TRACE uses agent avoidance guidance.
+            </p>
+        </td>
+    </tr>
+</table>
+<table align=center width=1200px>
+    <tr>
+            <td colspan='2'>
+                <center>
+                <video width="600" height="337" controls muted autoplay loop>
+                    <source src="./videos/full_system/crowd_side.mp4" type="video/mp4">
+                </video>
+                </center>
+            </td>
+            <td colspan='2'>
+                <center>
+                <video width="600" height="337" controls muted autoplay loop>
+                    <source src="./videos/full_system/crowd_top.mp4" type="video/mp4">
+                </video>
+                </center>
+            </td>              
+    </tr>          
+    <tr>
+        <center>
+            <td colspan='2'>
+                <center>
+                    Pedestrians naturally avoid a large majority of collisions.
+                </center>
+            </td>
+            <td colspan='2'>
+                <center>
+                    Top down view of planned TRACE trajectories.             
+                </center>
+            </td>
+        </center>
+    </tr>
+    </table>
+    <table align=center width=1200px>
+        <tr>
+                <td colspan='2'>
+                    <center>
+                        <video width="600" height="337" controls muted autoplay loop>
+                            <source src="./videos/full_system/crowd_ego.mp4" type="video/mp4">
+                        </video>
+                    </center>
+                </td>          
+        </tr>          
+        <tr>
+            <center>
+                <td colspan='2'>
+                    <center>
+                        Visualization of the 2D top-down TRACE inputs and outputs along with ego pedestrian motion.
+                    </center>
+                </td>
+            </center>
+        </tr>
+    </table>
+    <br>
+
+    <table align=center width=1000px>
+        <tr>
+            <td>
+                <a id="full_sys_social_groups"></a>
+                <p align="justify">
+                    <span style="font-size:25px">
+                        Social Groups
+                    </span>    
+                    <br>
+                    Examples where TRACE uses social group guidance to encourage groups of pedestrians to travel together.
+                    Social groups are determined heuristically based on position at initialization.
+                    Pedestrians in the same group have the same color arrow above them.
+                </p>
+            </td>
+        </tr>
+    </table>
+    <table align=center width=1200px>
+        <tr>
+                <td colspan='2'>
+                    <center>
+                        <video width="820" height="480" controls muted autoplay loop>
+                            <source src="./videos/full_system/social_groups.mp4" type="video/mp4">
+                        </video>
+                    </center>
+                </td>          
+        </tr>          
+        <tr>
+            <center>
+                <td colspan='2'>
+                    <center>
+                        Plausible social groups from 2-8 agents are formed.
+                    </center>
+                </td>
+            </center>
+        </tr>
+    </table>
+    <br>
+
+    <table align=center width=1000px>
+        <tr>
+            <td>
+                <a id="full_sys_variable_terrain"></a>
+                <p align="justify">
+                    <span style="font-size:25px">
+                        Variable Terrains
+                    </span>    
+                    <br>
+                    In these examples, random trajectories are sampled from TRACE with no guidance.
+                    TRACE is unaware of the surrounding terrain (as shown by the emtpy 2D map), but by training in a wide variety of environments PACER can still
+                    robustly follow trajectories.
+                </p>
+            </td>
+        </tr>
+    </table>
+    <table align=center width=1200px>
+        <tr>
+                <td colspan='2'>
+                    <center>
+                        <video width="820" height="480" controls muted autoplay loop>
+                            <source src="./videos/full_system/terrain.mp4" type="video/mp4">
+                        </video>
+                    </center>
+                </td>          
+        </tr>          
+        <tr>
+            <center>
+                <td colspan='2'>
+                    <center>
+                        PACER handles slopes, rough ground, stairs, and more.
+                    </center>
+                </td>
+            </center>
+        </tr>
+    </table>
+    <br>
+
+    <table align=center width=1000px>
+        <tr>
+            <td>
+                <a id="full_sys_obstacles"></a>
+                <p align="justify">
+                    <span style="font-size:25px">
+                        Obstacles and Waypoints
+                    </span>    
+                    <br>
+                    In these examples, the system must navigate around obstacles while going to a specified waypoint.
+                    TRACE uses obstacle avoidance and waypoint (at a specific time) guidance.
+                </p>
+            </td>
+        </tr>
+    </table>
+    <table align=center width=1200px>
+        <tr>
+                <td colspan='2'>
+                    <center>
+                        <video width="820" height="480" controls muted autoplay loop>
+                            <source src="./videos/full_system/obstacles.mp4" type="video/mp4">
+                        </video>
+                    </center>
+                </td>          
+        </tr>          
+        <tr>
+            <center>
+                <td colspan='2'>
+                    <center>
+                        The obstacle map input to TRACE is visualized along with the waypoint as an "X".
+                    </center>
+                </td>
+            </center>
+        </tr>
+    </table>
+    <br>
+
+    <table align=center width=1000px>
+        <tr>
+            <td>
+                <a id="full_sys_sdg"></a>
+                <p align="justify">
+                    <span style="font-size:25px">
+                        Synthetic Data Generation in Street Scenes
+                    </span>    
+                    <br>
+                    In these examples, we demonstrate how our animation system could be used to generate synthetic data of pedestrians interacting in city street scenes (e.g. for autonomous driving applications).
+                    In this setting, TRACE uses obstacle and agent avoidance guidance, along with a minimum speed guidance to encourage more motion.
+                    In the top examples, crowds are simulated unaware of the semantics of the sidewalks or street.
+                    In the bottom examples, we create more realistic semantics by treating the street as an "obstacle" that guidance tries to avoid. This encourages pedestrians to stay mostly on sidewalks.
+                </p>
+            </td>
+        </tr>
+    </table>
+    <table align=center width=1200px>
+        <tr>
+                <td colspan='2'>
+                    <center>
+                    <video width="600" height="337" controls muted autoplay loop>
+                        <source src="./videos/full_system/street_scene_full_map.mp4" type="video/mp4">
+                    </video>
+                    </center>
+                </td>      
+                <td colspan='2'>
+                    <center>
+                    <video width="600" height="337" controls muted autoplay loop>
+                        <source src="./videos/full_system/street_scene_textured.mp4" type="video/mp4">
+                    </video>
+                    </center>
+                </td>      
+        </tr>          
+        <tr>
+            <center>
+                <td colspan='2'>
+                    <center>
+                        Simulated crowds in street scenes. PACER handles curbs and steep slopes.
+                    </center>
+                </td>
+                <td colspan='2'>
+                    <center>
+                        Motions can be used to animate textured models for synthetic data generation.
+                    </center>
+                </td>
+            </center>
+        </tr>
+    </table>
+    <table align=center width=1200px>
+        <tr>
+                <td colspan='2'>
+                    <center>
+                    <video width="600" height="337" controls muted autoplay loop>
+                        <source src="./videos/full_system/street_scene_sidewalk_side.mp4" type="video/mp4">
+                    </video>
+                    </center>
+                </td>
+                <td colspan='2'>
+                    <center>
+                    <video width="600" height="337" controls muted autoplay loop>
+                        <source src="./videos/full_system/street_scene_sidewalk_ego.mp4" type="video/mp4">
+                    </video>
+                    </center>
+                </td>              
+        </tr>          
+        <tr>
+            <center>
+                <td colspan='2'>
+                    <center>
+                        Treating streets as obstacles encourages pedestrians to stay on the sidewalk.
+                    </center>
+                </td>
+                <td colspan='2'>
+                    <center>
+                        Ego viewpoint showing how the street and buildings appear as obstacles to TRACE.            
+                    </center>
+                </td>
+            </center>
+        </tr>
+        </table>
+        
+        <br>
+        <br>
+
+        <table align=center width=1000px>
+            <tr>
+                <td>
+                    <a id="pacer_results"></a>
+                    <p align="justify">
+                        <span style="font-size:35px">
+                            <b>PACER Analysis and Ablations</b>
+                        </span>                                     
+                        <br>
+                        Next, we qualitatively evaluate our animation controller PACER and several ablations in specific situations. 
+                        The trajectories in these examples are <b>procedurally generated (not from TRACE)</b>.
+                        <br><br>
+                        <a id="pacer_capabilities"></a>
+                        <span style="font-size:25px">
+                            PACER Capabilities
+                        </span>    
+                        <br>
+                        First, we demonstrate the various capabilities of PACER. In some examples, the heightmap input to the model is visualized in the top left corner.
+                    </p>
+                </td>
+            </tr>
+        </table>
+        <table align=center width=1200px>
+            <tr>
+                    <td colspan='2'>
+                        <center>
+                        <video width="600" height="337" controls muted autoplay loop>
+                            <source src="./videos/pacer_abilities/pacer_terrains.mp4" type="video/mp4">
+                        </video>
+                        </center>
+                    </td>
+                    <td colspan='2'>
+                        <center>
+                        <video width="600" height="337" controls muted autoplay loop>
+                            <source src="./videos/pacer_abilities/movements.mp4" type="video/mp4">
+                        </video>
+                        </center>
+                    </td>              
+            </tr>          
+            <tr>
+                <center>
+                    <td colspan='2'>
+                        <center>
+                            Robustness to various terrains.
+                        </center>
+                    </td>
+                    <td colspan='2'>
+                        <center>
+                            Handle varying trajectories including different speeds and sharp turns.
+                        </center>
+                    </td>
+                </center>
+            </tr>
+        </table>
+        <table align=center width=1200px>
+            <tr>
+                    <td colspan='2'>
+                        <center>
+                        <video width="600" height="337" controls muted autoplay loop>
+                            <source src="./videos/pacer_abilities/avoid.mp4" type="video/mp4">
+                        </video>
+                        </center>
+                    </td>    
+                    <td colspan='2'>
+                        <center>
+                        <video width="600" height="337" controls muted autoplay loop>
+                            <source src="./videos/pacer_abilities/body_types.mp4" type="video/mp4">
+                        </video>
+                        </center>
+                    </td>       
+            </tr>          
+            <tr>
+                <center>
+                    <td colspan='2'>
+                        <center>
+                            Agent awareness helps avoid collisions.
+                        </center>
+                    </td>
+                    <td colspan='2'>
+                        <center>
+                            Robust to a wide range of character body shapes.
+                        </center>
+                    </td>
+                </center>
+            </tr>
+        </table>
+        <table align=center width=1200px>
+            <tr>
+                    <td colspan='2'>
+                        <center>
+                        <video width="600" height="337" controls muted autoplay loop>
+                            <source src="./videos/pacer_abilities/getup.mp4" type="video/mp4">
+                        </video>
+                        </center>
+                    </td>      
+            </tr>          
+            <tr>
+                <center>
+                    <td colspan='2'>
+                        <center>
+                            PACER can be trained to get up after falls. In these examples, a force is applied to the character to knock them over. 
+                            We demonstrate this ability in the terrains used for training and also a scanned scene mesh.
+                        </center>
+                    </td>
+                </center>
+            </tr>
+        </table>
+
+        <br>
+
+        <table align=center width=1000px>
+            <tr>
+                <td>
+                    <a id="pacer_body_shape"></a>
+                    <p align="justify">
+                        <span style="font-size:25px">
+                            Body Shape Awareness Ablation
+                        </span>    
+                        <br>
+                        Next, we evaluate how using the body shape as input to the model affects motion quality.
+                        The examples below compare a body unaware ablation of PACER with the body-aware full model on two extreme body shapes: one very short and one very tall.
+                    </p>
+                </td>
+            </tr>
+        </table>
+        <table align=center width=1200px>
+            <tr>
+                    <td colspan='2'>
+                        <center>
+                        <video width="600" height="337" controls muted autoplay loop>
+                            <source src="./videos/pacer_ablations/body_unaware.mp4" type="video/mp4">
+                        </video>
+                        </center>
+                    </td>
+                    <td colspan='2'>
+                        <center>
+                        <video width="600" height="337" controls muted autoplay loop>
+                            <source src="./videos/pacer_ablations/body_aware.mp4" type="video/mp4">
+                        </video>
+                        </center>
+                    </td>              
+            </tr>          
+            <tr>
+                <center>
+                    <td colspan='2'>
+                        <center>
+                            <b>Body unaware model</b>. Falls down or awkwardly squats for extreme bodies.
+                        </center>
+                    </td>
+                    <td colspan='2'>
+                        <center>
+                            <b>Body aware model</b> (full PACER model). Nicely handles both extremes.
+                        </center>
+                    </td>
+                </center>
+            </tr>
+        </table>
+
+        <br>
+
+        <table align=center width=1000px>
+            <tr>
+                <td>
+                    <a id="pacer_sym_loss"></a>
+                    <p align="justify">
+                        <span style="font-size:25px">
+                            Motion Symmetry Loss Ablation
+                        </span>    
+                        <br>
+                        Next, we look at how using the motion symmetry loss when training PACER affects motion quality.
+                    </p>
+                </td>
+            </tr>
+        </table>
+        <table align=center width=1200px>
+            <tr>
+                    <td colspan='2'>
+                        <center>
+                        <video width="600" height="337" controls muted autoplay loop>
+                            <source src="./videos/pacer_ablations/without_sym_loss.mp4" type="video/mp4">
+                        </video>
+                        </center>
+                    </td>
+                    <td colspan='2'>
+                        <center>
+                        <video width="600" height="337" controls muted autoplay loop>
+                            <source src="./videos/pacer_ablations/with_sym_loss.mp4" type="video/mp4">
+                        </video>
+                        </center>
+                    </td>              
+            </tr>          
+            <tr>
+                <center>
+                    <td colspan='2'>
+                        <center>
+                            <b>Without symmetry loss</b>. Unnatural limping occurs at low speeds.
+                        </center>
+                    </td>
+                    <td colspan='2'>
+                        <center>
+                            <b>With symmetry loss</b> (full PACER model). Natural and symmteric gait.
+                        </center>
+                    </td>
+                </center>
+            </tr>
+        </table>
+
+        <br>
+
+        <table align=center width=1000px>
+            <tr>
+                <td>
+                    <a id="pacer_failures"></a>
+                    <p align="justify">
+                        <span style="font-size:25px">
+                            Failure Cases
+                        </span>    
+                        <br>
+                        PACER has difficulty handling small and very wide obstacles in addition to extremely high speed trajectories.
+                        In practice, when used with TRACE these issues are not too problematic since TRACE can handle longer-term planning 
+                        around large obstacles and generates trajectories at walking speeds.
+                    </p>
+                </td>
+            </tr>
+        </table>
+        <table align=center width=1200px>
+            <tr>
+                    <td colspan='2'>
+                        <center>
+                        <video width="600" height="337" controls muted autoplay loop>
+                            <source src="./videos/pacer_abilities/fail.mp4" type="video/mp4">
+                        </video>
+                        </center>
+                    </td>           
+            </tr>          
+            <tr>
+                <center>
+                    <td colspan='2'>
+                        <center>
+                            Failure cases of PACER using procedural trajectories (not TRACE).
+                        </center>
+                    </td>
+                </center>
+            </tr>
+        </table>
+
+        <br><br>
+
+        <table align=center width=1000px>
+            <tr>
+                <td>
+                    <a id="trace_results"></a>
+                    <p align="justify">
+                        <span style="font-size:35px">
+                            <b>TRACE Qualitative Results</b>
+                        </span>                                     
+                        <br>
+                        Here we provide several qualitative results of closed-loop rollouts of TRACE on both synthetic and real-world data.
+                        <br><br>
+                        <a id="trace_orca"></a>
+                        <span style="font-size:25px">
+                            ORCA Data
+                        </span>    
+                        <br>
+                        This dataset is generated from a crowd simulator and ORCA-Maps contains obstacles in the map given to TRACE. 
+                        Here we evaluate TRACE on this data in a closed loop using obstacle and agent avoidance along with waypoint guidance.
+                    </p>
+                </td>
+            </tr>
+        </table>
+        <table align=center width=1200px>
+            <tr>
+                    <td colspan='2'>
+                        <center>
+                        <video width="400" height="400" controls muted autoplay loop>
+                            <source src="./videos/orca/obstacle_agent_coll.mp4" type="video/mp4">
+                        </video>
+                        </center>
+                    </td>
+                    <td colspan='2'>
+                        <center>
+                        <video width="400" height="400" controls muted autoplay loop>
+                            <source src="./videos/orca/waypoint_all_coll.mp4" type="video/mp4">
+                        </video>
+                        </center>
+                    </td>
+                    <td colspan='2'>
+                        <center>
+                        <video width="400" height="400" controls muted autoplay loop>
+                            <source src="./videos/orca/no_map_agt_coll.mp4" type="video/mp4">
+                        </video>
+                        </center>
+                    </td>              
+            </tr>          
+            <tr>
+                <center>
+                    <td colspan='2'>
+                        <center>
+                            ORCA-Maps: Obstace & Agent Avoidance.
+                        </center>
+                    </td>
+                    <td colspan='2'>
+                        <center>
+                            ORCA-Maps: Waypoint (at time) + Obstacle & Agent Avoidance.
+                        </center>
+                    </td>
+                    <td colspan='2'>
+                        <center>
+                            ORCA-Interact: Agent Avoidance.
+                        </center>
+                    </td>
+                </center>
+            </tr>
+        </table>
+
+        <br>
+
+        <table align=center width=1000px>
+            <tr>
+                <td>
+                    <a id="trace_nusc"></a>
+                    <p align="justify">
+                        <span style="font-size:25px">
+                            nuScenes Data
+                        </span>    
+                        <br>
+                        This real-world dataset contains detailed semantic maps with sidewalks and crosswalks labeled (shown in dark blue below).
+                    </p>
+                </td>
+            </tr>
+        </table>
+        <table align=center width=1200px>
+            <tr>
+                    <td colspan='2'>
+                        <center>
+                        <video width="400" height="400" controls muted autoplay loop>
+                            <source src="./videos/nusc/nusc_no_guide.mp4" type="video/mp4">
+                        </video>
+                        </center>
+                    </td>
+                    <td colspan='2'>
+                        <center>
+                        <video width="400" height="400" controls muted autoplay loop>
+                            <source src="./videos/nusc/nusc_waypoint.mp4" type="video/mp4">
+                        </video>
+                        </center>
+                    </td>   
+                    <td colspan='2'>
+                        <center>
+                        <video width="400" height="400" controls muted autoplay loop>
+                            <source src="./videos/nusc/nusc_waypoint_perturb.mp4" type="video/mp4">
+                        </video>
+                        </center>
+                    </td>            
+            </tr>          
+            <tr>
+                <center>
+                    <td colspan='2'>
+                        <center>
+                            No guidance. Sampled trajectories generally stay on sidewalks and crosswalks.
+                        </center>
+                    </td>
+                    <td colspan='2'>
+                        <center>
+                            Waypoint (any time) guidance.
+                        </center>
+                    </td>
+                    <td colspan='2'>
+                        <center>
+                            Perturbed waypoint (any time) guidance.
+                        </center>
+                    </td>
+                </center>
+            </tr>
+        </table>
+
+</body>
+
+</html>
